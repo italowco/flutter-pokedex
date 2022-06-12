@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/src/sample_feature/sample_item_list_view.dart';
+
+import '../sample_feature/pokedex_list.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -25,7 +26,10 @@ class _MyHomePageState extends State<LoginPage> {
   bool isKeyboardVisible = false;
 
   Image buildLogo() {
-    return Image.asset('assets/images/app-logo.png');
+    return Image.asset(
+      'assets/images/app-logo.png',
+      scale: 5,
+    );
   }
 
   @override
@@ -38,11 +42,11 @@ class _MyHomePageState extends State<LoginPage> {
             key: _formKey,
             child: Center(
                 child: Container(
-              padding: const EdgeInsets.all(30.0),
+              padding: const EdgeInsets.all(10.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  if (!isKeyboard) buildLogo(),
+                  // if (!isKeyboard) buildLogo(),
                   TextFormField(
                     obscureText: false,
                     decoration: const InputDecoration(
@@ -78,7 +82,7 @@ class _MyHomePageState extends State<LoginPage> {
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
                           Navigator.restorablePushNamed(
-                              context, SampleItemListView.routeName);
+                              context, PokemonList.routeName);
                         }
                       },
                       child: Text('Entrar'),

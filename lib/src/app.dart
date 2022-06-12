@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:pokedex/src/sample_feature/sample_item.dart';
+import 'package:pokedex/src/sample_feature/pokedex_list.dart';
+import 'package:pokedex/src/sample_feature/pokemon.dart';
+import 'package:pokedex/src/sample_feature/pokemon_detail.dart';
+import 'package:pokedex/src/settings/pokemon_service.dart';
 
 import 'login/login_page.dart';
-import 'sample_feature/sample_item_details_view.dart';
-import 'sample_feature/sample_item_list_view.dart';
 import 'settings/settings_controller.dart';
 import 'settings/settings_view.dart';
 
@@ -62,16 +63,16 @@ class MyApp extends StatelessWidget {
           // Define a function to handle named routes in order to support
           // Flutter web url navigation and deep linking.
           onGenerateRoute: (RouteSettings routeSettings) {
-            return MaterialPageRoute<void>(
+            return MaterialPageRoute(
               settings: routeSettings,
               builder: (BuildContext context) {
                 switch (routeSettings.name) {
                   case SettingsView.routeName:
                     return SettingsView(controller: settingsController);
-                  case SampleItemDetailsView.routeName:
-                    return const SampleItemDetailsView();
-                  case SampleItemListView.routeName:
-                    return const SampleItemListView();
+                  case PokemonList.routeName:
+                    return PokemonList();
+                  case PokemonDetail.routeName:
+                    return PokemonDetail();
                   case LoginPage.routeName:
                   default:
                     return const LoginPage();
